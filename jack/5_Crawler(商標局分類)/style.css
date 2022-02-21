@@ -1,0 +1,5 @@
+.t{
+    display: flex;
+    width: 1500px;
+    flex-wrap: wrap;
+}
