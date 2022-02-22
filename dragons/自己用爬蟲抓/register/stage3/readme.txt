@@ -1,1 +1,0 @@
-這部分是把資料(output_Dragons.zip/output_Dragons2.zip/output_Wen.zip)解壓縮到工作站，然後再做parse
