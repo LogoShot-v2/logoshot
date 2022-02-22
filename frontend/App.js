@@ -28,9 +28,9 @@ export default function App() {
     <PaperProvider>
       <NavigationContainer>
         <AppStack.Navigator initialRouteName="HomePage">
-          <AppStack.Screen name="HomePage3" component={HomePage} />
+          <AppStack.Screen name="HomePage" component={HomePage} />
+          <AppStack.Screen name="HomePage3" component={HomePage3} />
           <AppStack.Screen name="HomePage2" component={HomePage2} />
-          <AppStack.Screen name="HomePage" component={HomePage3} />
           <AppStack.Screen name="TrademarkSearch" component={TrademarkSearch} />
           <AppStack.Screen name="InspirationSearch" component={InspirationSearch} />
           <AppStack.Screen name="SearchResults" component={SearchResults} />

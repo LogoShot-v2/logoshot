@@ -1,105 +1,77 @@
 import React, { useState } from "react";
-import { StyleSheet, Image, View, Button } from "react-native";
-import * as ImagePicker from "expo-image-picker";
-import { images } from "../../constant/";
-import { GET_TEXT, GET_IMAGE, SEND_IMAGE, GET_IMAGE2 } from "../api";
-
-// ImagePicker: https://docs.expo.io/versions/latest/sdk/imagepicker/
-const pickImage = async () => {
-  let result = await ImagePicker.launchImageLibraryAsync({
-    mediaTypes: ImagePicker.MediaTypeOptions.All,
-    allowsEditing: true,
-    aspect: [4, 3],
-    quality: 1,
-  });
-
-  // console.log(result);
-
-  if (!result.cancelled) {
-    return { uri: result.uri };
-  }
-  return false;
-};
-
-const cameraImage = async () => {
-  let result = await ImagePicker.launchCameraAsync({
-    mediaTypes: ImagePicker.MediaTypeOptions.Images,
-    allowsEditing: true,
-    aspect: [4, 3],
-    quality: 1,
-  });
-
-  // console.log(result);
-
-  if (!result.cancelled) {
-    return { uri: result.uri };
-  }
-  return false;
-};
+import { StyleSheet, View, Text, Image, TouchableOpacity, Alert } from "react-native";
+import { images, icons, COLORS, FONTS, SIZES } from "../../constant";
+import { useFonts } from "expo-font";
+import { GET_IMAGE3 } from "../api";
+import { SimpleLineIcons } from "@expo/vector-icons";
 
 export default function HomePage({ navigation }) {
-  const [ImageURL, setImageURL] = useState(images.cat);
+  const [isLoading, setIsLoading] = useState(false);
+  const [loaded] = useFonts({
+    "Roboto-Regular": require("../../assets/fonts/Roboto-Regular.ttf"),
+    "Roboto-Black": require("../../assets/fonts/Roboto-Black.ttf"),
+    "Roboto-Bold": require("../../assets/fonts/Roboto-Bold.ttf"),
+  });
+
+  if (!loaded) {
+    return null;
+  }
+
   return (
-    <View style={styles.HomePage}>
-      {/* <Button title="receive remote text" onPress={() => GET_TEXT()}></Button> */}
-      {/* <Button
-        title="receive remote file"
-        onPress={async () => {
-          var photo = await GET_IMAGE("104029750");
-          // console.log(photo.metadata);
-          setImageURL({ uri: photo.uri });
-        }}
-      ></Button> */}
-      {/* <Button
-            title="read local file"
-            onPress={() => setImageURL(require("./dog.jpg"))}
-          ></Button> */}
-      <Button
-        title="read device file"
-        onPress={async () => {
-          var photo = await pickImage();
-          if (photo) setImageURL(photo);
-          // await SEND_IMAGE(ImageURL); //這時候上行的setImageURL(photo)可能尚未執行完成，導致ImageURL.uri為null
-          // await SEND_IMAGE(photo);
-          var photos = await GET_IMAGE2();
-          navigation.push("SearchResults", { photos: photos });
-        }}
-      ></Button>
-      <Button
-        title="create device file"
-        onPress={async () => {
-          var photo = await cameraImage();
-          if (photo) setImageURL(photo);
-          // await SEND_IMAGE(ImageURL); //這時候上行的setImageURL(photo)可能尚未執行完成，導致ImageURL.uri為null
-          // await SEND_IMAGE(photo);
-          var photos = await GET_IMAGE2();
-          navigation.push("SearchResults", { photos: photos });
-        }}
-      ></Button>
-      {/* <Button
-        title="send device file"
-        onPress={async () => {
-          await SEND_IMAGE(ImageURL);
-        }}
-      ></Button> */}
-      {/* <Button
-        title="GET_IMAGE2"
-        onPress={async () => {
-          var photos = await GET_IMAGE2();
-          navigation.push("SearchResults", { photos: photos });
-        }}
-      ></Button> */}
-      {/* iPhone11/XR screen resolution: width = 414, height = 896 */}
-      <Image source={ImageURL} style={{ width: "50%", height: "25%" }} />
+    <View style={styles.container}>
+      <View style={{ height: "20%", flexDirection: "row", justifyContent: "flex-end", backgroundColor: COLORS.white }}>
+        <TouchableOpacity
+          onPress={() => {
+            Alert.alert(
+              "LogoShot 介紹",
+              "LogoShot 是台灣最好用的商標搜尋 APP，使用者只要拿起手機拍攝身邊的商標，就能得知該商標的註冊資訊。\n我們也使用自然語言處理（NLP）技術優化文字搜尋功能，並使用生成對抗網路（GAN）產生數以萬計的商標圖片，供使用者作為靈感啟發。\n\n指導教授：盧信銘老師\n組員：賴群龍（APP開發）\n組員：石子仙（文字搜尋）\n組員：陳韋傑（文字搜尋）\n組員：陳柏瑜（圖片搜尋）\n組員：黃佳文（商標生成）"
+            );
+          }}
+        >
+          <SimpleLineIcons style={{ padding: 20 }} name="info" size={30} color="black" />
+        </TouchableOpacity>
+      </View>
+      <View style={{ height: "13%", backgroundColor: COLORS.white, alignItems: "center", justifyContent: "center" }}>
+        <Text style={{ color: COLORS.secondary, ...FONTS.largeTitle }}>LOGO SHOT</Text>
+      </View>
+      <View style={{ height: "32%", backgroundColor: COLORS.white }}></View>
+      <View style={{ flexDirection: "row", height: "25%", backgroundColor: COLORS.white }}>
+        <TouchableOpacity
+          style={{ flex: 1, alignItems: "center", justifyContent: "center", backgroundColor: COLORS.white, borderRadius: 100, marginHorizontal: SIZES.base * 2 }}
+          disabled={isLoading}
+          onPress={async () => {
+            setIsLoading(true);
+            navigation.push("TrademarkSearch");
+            setIsLoading(false);
+          }}
+        >
+          <Text style={{ ...FONTS.h4 }}>找商標</Text>
+          <Image source={icons.camera} resizeMode="contain" style={{ width: "60%", height: "60%" }} />
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={{ flex: 1, alignItems: "center", justifyContent: "center", backgroundColor: COLORS.white, borderRadius: 100, marginHorizontal: SIZES.base * 2 }}
+          disabled={isLoading}
+          onPress={async () => {
+            setIsLoading(true);
+            let startTime = new Date();
+            var base64Images = await GET_IMAGE3(0);
+            let endTime = new Date();
+            console.log((endTime - startTime) / 1000 + " seconds");
+            navigation.push("InspirationSearch", { base64Images: base64Images });
+            setIsLoading(false);
+          }}
+        >
+          <Text style={{ ...FONTS.h4 }}>找靈感</Text>
+          <Image source={icons.idea} resizeMode="contain" style={{ width: "60%", height: "60%" }} />
+        </TouchableOpacity>
+      </View>
+      <View style={{ height: "10%", backgroundColor: COLORS.white }}></View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  HomePage: {
+  container: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
   },
 });
