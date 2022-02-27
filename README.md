@@ -18,6 +18,7 @@ yarn install
 ###### 執行前端
 * 執行前端
 ```
+yarn add expo-cli
 yarn start
 ```
 * 此時若之前沒有裝過 expo，會跳出錯誤碼，請依錯誤碼指示安裝 expo (安裝在 global 比較保險)。安裝完 expo 後重新 yarn start 應該就可以跑了。
