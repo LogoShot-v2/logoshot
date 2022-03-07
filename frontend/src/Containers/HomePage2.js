@@ -83,7 +83,7 @@ export default function HomePage2({ navigation }) {
                   navigation.push("SearchResults", { photos: photos });
                 }}
               >
-                <Text>TAKE PHOTOS</Text>
+                <Text>開啟相機</Text>
                 <Image
                   source={icons.camera}
                   resizeMode="contain"
@@ -100,7 +100,7 @@ export default function HomePage2({ navigation }) {
                   console.log("Button2 on pressed");
                 }}
               >
-                <Text>TEXT SEARCH</Text>
+                <Text>文字搜尋</Text>
                 <Image
                   source={icons.text}
                   resizeMode="contain"
@@ -124,7 +124,7 @@ export default function HomePage2({ navigation }) {
                   navigation.push("SearchResults", { photos: photos });
                 }}
               >
-                <Text>GALLERY</Text>
+                <Text>相簿</Text>
                 <Image
                   source={icons.gallery}
                   resizeMode="contain"

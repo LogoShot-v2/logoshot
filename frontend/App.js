@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Platform, AppRegistry } from "react-native";
+import { Platform, AppRegistry, Alert } from "react-native";
 import { Provider as PaperProvider } from "react-native-paper";
 // import { SafeAreaProvider } from "react-native-safe-area-context";
 // import { name as appName } from "./app.json";

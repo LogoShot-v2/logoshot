@@ -50,10 +50,10 @@ export default function InspirationSearch({ route, navigation }) {
         </View>
       </View>
       <View style={{ height: "10%", flexDirection: "row", alignItems: "center", justifyContent: "space-evenly", backgroundColor: COLORS.white, padding: SIZES.padding / 2 }}>
-        <Chip buttonStyle={{ width: 80 }} title="Circles" disabled={disabled} type={label === 0 ? "solid" : "outline"} onPress={() => clickChip(0)} />
-        <Chip buttonStyle={{ width: 80 }} title="Animals" disabled={disabled} type={label === 1 ? "solid" : "outline"} onPress={() => clickChip(1)} />
-        <Chip buttonStyle={{ width: 80 }} title="Plants" disabled={disabled} type={label === 2 ? "solid" : "outline"} onPress={() => clickChip(2)} />
-        <Chip buttonStyle={{ width: 80 }} title="Others" disabled={disabled} type={label === 3 ? "solid" : "outline"} onPress={() => clickChip(3)} />
+        <Chip buttonStyle={{ width: 80 }} title="圓圈" disabled={disabled} type={label === 0 ? "solid" : "outline"} onPress={() => clickChip(0)} />
+        <Chip buttonStyle={{ width: 80 }} title="動物" disabled={disabled} type={label === 1 ? "solid" : "outline"} onPress={() => clickChip(1)} />
+        <Chip buttonStyle={{ width: 80 }} title="植物" disabled={disabled} type={label === 2 ? "solid" : "outline"} onPress={() => clickChip(2)} />
+        <Chip buttonStyle={{ width: 80 }} title="其他" disabled={disabled} type={label === 3 ? "solid" : "outline"} onPress={() => clickChip(3)} />
       </View>
       <View style={{ height: "35%", alignItems: "center", justifyContent: "center", backgroundColor: COLORS.white }}>
         <Image source={target === -1 ? { uri: imageList[count] } : { uri: imageList[target] }} style={{ resizeMode: "contain", width: "70%", height: "70%" }}></Image>
@@ -72,7 +72,7 @@ export default function InspirationSearch({ route, navigation }) {
               setTarget(-1);
             }
           }}
-          title={target === -1 ? "STOP" : "RESUME"}
+          title={target === -1 ? "停止" : "繼續"}
         ></Button>
       </View>
       <View style={{ height: "25%", flexDirection: "row", alignItems: "center", justifyContent: "space-evenly", backgroundColor: COLORS.white }}>

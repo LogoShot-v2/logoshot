@@ -63,7 +63,7 @@ export default function TrademarkSearch({ navigation }) {
   const [isLoading, setIsLoading] = useState(false);
   const list = [
     {
-      title: "Take a photo",
+      title: "開啟相機",
       onPress: async () => {
         var photo = await cameraImage();
         if (photo) setImageURL(photo);
@@ -71,7 +71,7 @@ export default function TrademarkSearch({ navigation }) {
       },
     },
     {
-      title: "Select a photo",
+      title: "從相簿選擇",
       onPress: async () => {
         var photo = await pickImage();
         if (photo) setImageURL(photo);
@@ -79,7 +79,7 @@ export default function TrademarkSearch({ navigation }) {
       },
     },
     {
-      title: "Cancel",
+      title: "取消",
       containerStyle: { backgroundColor: "red" },
       titleStyle: { color: "white" },
       onPress: () => setIsVisible(false),
@@ -92,7 +92,7 @@ export default function TrademarkSearch({ navigation }) {
         <View style={{ backgroundColor: COLORS.white, marginHorizontal: SIZES.padding / 2 }}>
           {/* Text & Button */}
           <View style={{ flexDirection: "row" }}>
-            <Text style={{ ...FONTS.h2, marginBottom: SIZES.padding / 6 }}>Search by Image</Text>
+            <Text style={{ ...FONTS.h2, marginBottom: SIZES.padding / 6 }}>圖片搜尋</Text>
             <TouchableOpacity
               onPress={() => {
                 Alert.alert(
@@ -125,7 +125,7 @@ export default function TrademarkSearch({ navigation }) {
         <View style={{ height: "35%", backgroundColor: COLORS.white, marginHorizontal: SIZES.padding / 2 }}>
           {/* Text & Searchbar */}
           <View style={{ flexDirection: "row" }}>
-            <Text style={{ ...FONTS.h2, marginBottom: SIZES.padding / 6 }}>Trademark Text(s)</Text>
+            <Text style={{ ...FONTS.h2, marginBottom: SIZES.padding / 6 }}>商標文字</Text>
             <TouchableOpacity
               onPress={() => {
                 Alert.alert(
@@ -143,7 +143,7 @@ export default function TrademarkSearch({ navigation }) {
             disabled={isLoading}
             onChangeText={(query) => setSearchQuery(query)}
             value={searchQuery}
-            placeholder="Enter any text in your trademark"
+            placeholder="輸入您商標上的任何文字"
           />
           {/* CheckBox */}
           <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between" }}>

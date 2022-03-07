@@ -3,7 +3,7 @@
     "name": "Logo Shot",
     "slug": "LogoShot",
     "privacy": "public",
-    "version": "8.0.0",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -14,14 +14,17 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true,
       "infoPlist": {
-        "NSPhotoLibraryUsageDescription": "Allow $(PRODUCT_NAME) to access your photos",
-        "NSCameraUsageDescription": "Allow $(PRODUCT_NAME) to access your camera",
+        "NSPhotoLibraryUsageDescription": "$(PRODUCT_NAME)在商標搜尋中提供了以圖搜圖的功能，若希望使用此功能，請打開相簿權限",
+        "NSCameraUsageDescription": "$(PRODUCT_NAME)在商標搜尋中提供了以圖搜圖的功能，若希望能在使用此功能時運用相機拍攝，請打開相機權限",
         "NSMicrophoneUsageDescription": "Allow $(PRODUCT_NAME) to access your microphone"
-      }
+      },
+      "bundleIdentifier": "meow.logoshot"
     },
     "android": {
       "package": "meow.logoshot",
@@ -31,11 +34,20 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "permissions": ["android.permission.CAMERA", "android.permission.READ_EXTERNAL_STORAGE", "android.permission.WRITE_EXTERNAL_STORAGE", "android.permission.RECORD_AUDIO"]
+      "permissions": [
+        "android.permission.CAMERA",
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.RECORD_AUDIO"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "plugins": ["expo-image-picker", "expo-file-system"]
+    "plugins": [
+      "expo-image-picker",
+      "expo-file-system"
+    ]
   }
 }
+
