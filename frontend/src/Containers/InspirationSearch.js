@@ -7,7 +7,7 @@ import { SimpleLineIcons } from "@expo/vector-icons";
 import { ActivityIndicator, StyleSheet } from "react-native";
 
 // import  "../../constant/others.css";
-import {RNFetchBlob} from "rn-fetch-blob";
+// import {RNFetchBlob} from "rn-fetch-blob";
 // import { Platform } from "react-native";
 
 
@@ -59,7 +59,6 @@ export default function InspirationSearch({ route, navigation }) {
 const loading = () => (
   <View style={[styles.container, styles.horizontal]}>
     <ActivityIndicator />
-    <ActivityIndicator size="large" color="#00ff00" />
   </View>
 );
 
@@ -97,7 +96,7 @@ const loading = () => (
          {imageList.length !== 0 ?
         <Image source={start === true ? { uri: imageList[count] } : { uri: imageList[count] }} style={{ resizeMode: "contain", width: "70%", height: "70%" }}></Image>:
         <View style={[styles.container, styles.horizontal]}>
-          <ActivityIndicator size="large" color="#00ff00" />
+          <ActivityIndicator size="large" color="#888888" />
         </View>}
         {/* <Text>The {target === -1 ? count : target}th image</Text> */}
         {/* <Text>{label === 0 ? "Circles" : label === 1 ? "Animals" : label === 2 ? "Plants" : "Others"}</Text> */}
@@ -110,18 +109,13 @@ const loading = () => (
           onPress={()=> onStartOrStop()}
           title={start === true ? "停止" : "開始"}
         ></Button>
-          <Button
-          buttonStyle={{ width: 150 }}
-          containerStyle={{ alignItems: "center", justifyContent: "center" }}
-          disabled={disabled}
-          title={"下載"}
-        ></Button>
+  
       </View>
-      <View style={{ height: "25%", flexDirection: "row", alignItems: "center", justifyContent: "space-evenly", backgroundColor: COLORS.white }}>
+      {/* <View style={{ height: "25%", flexDirection: "row", alignItems: "center", justifyContent: "space-evenly", backgroundColor: COLORS.white }}>
         <Image source={images.lefthand} style={{ resizeMode: "contain", width: "70%", height: "70%" }}></Image>
         <Image source={images.righthand} style={{ resizeMode: "contain", width: "70%", height: "70%" }}></Image>
-      </View>
-      <View style={{ height: "8%", backgroundColor: COLORS.white }}>
+      </View> */}
+      <View style={{ height: "40%", backgroundColor: COLORS.white }}>
         {/* <Button buttonStyle={{ width: "100%" }} style={{ alignItems: "center", justifyContent: "center" }} onPress={() => {}} title="DOWNLOAD"></Button> */}
       </View>
     </ThemeProvider>

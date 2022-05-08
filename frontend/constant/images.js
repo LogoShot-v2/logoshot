@@ -13,7 +13,6 @@ export const random9 = require("../assets/images/random9.jpg");
 export const RANDOM = require("../assets/images/random.gif");
 export const righthand = require("../assets/images/righthand.png");
 export const lefthand = require("../assets/images/lefthand.png");
-export const loading = require("../assets/images/loading.png");
 export const oval_top = require("../assets/images/oval_top.png");
 export const oval_bottom = require("../assets/images/oval_bottom.png");
 export const uploading2 = require("../assets/images/uploading2.png");
@@ -34,7 +33,6 @@ export default {
   RANDOM,
   righthand,
   lefthand,
-  loading,
   oval_top,
   oval_bottom,
   uploading2,
