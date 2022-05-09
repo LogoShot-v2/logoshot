@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { StyleSheet, View, Button, Text, Image, TouchableOpacity, Alert } from "react-native";
-import { GET_IMAGE3 } from "../api";
-import { images, icons, COLORS, FONTS, SIZES } from "../../constant/";
+import { images, icons, COLORS, FONTS, SIZES } from "../../constant";
 import { ThemeProvider, CheckBox, BottomSheet, ListItem, SearchBar } from "react-native-elements";
 import * as ImagePicker from "expo-image-picker";
 import { SEND_IMAGE, GET_IMAGE2, Searching } from "../api";
@@ -97,7 +96,7 @@ const cameraImage = async () => {
         <View style={{ backgroundColor: COLORS.white, marginHorizontal: SIZES.padding / 2 , height: '100%' }}>
           {/* Text & Button */}
           <View style={{ flexDirection: "row" }}>
-            <Text style={{ ...FONTS.h2, marginBottom: SIZES.padding / 4 }}>圖片搜尋</Text>
+            <Text style={{ ...FONTS.h2, marginBottom: SIZES.padding / 4, lineHeight: 68 }}>圖片搜尋</Text>
             <TouchableOpacity
               onPress={() => {
                 Alert.alert(
@@ -127,6 +126,28 @@ const cameraImage = async () => {
             titleStyle={{ marginHorizontal: 5 }}
             />
             
+        
+         <View style={{ flex: 1, backgroundColor: COLORS.white, justifyContent: "flex-end" }}>
+          {/* Button */}
+          <Button
+            buttonStyle={{ width: "100%", height: 45 }}
+            containerStyle={{}}
+            loading={isLoading}
+            disabled={(images.uploading2 !== ImageURL) & (isLoading !== true) ? false : true}
+            onPress={async () => {
+              // await SEND_IMAGE(ImageURL);
+              // var photos = await GET_IMAGE2();
+              setIsLoading(true);
+              let startTime = new Date();
+              var returns = await Searching(ImageURL, searchQuery, [checked1, checked2, checked3, checked4]);
+              let endTime = new Date();
+              console.log((endTime - startTime) / 1000 + " seconds");
+              navigation.push("SearchResults", { returns: returns });
+              setIsLoading(false);
+            }}
+            title="送出"
+          ></Button>
+        </View>
           <BottomSheet isVisible={isVisible} containerStyle={{ backgroundColor: "rgba(0.5, 0.25, 0, 0.2)" }}>
           {list.map((l, i) => (
               <ListItem key={i} containerStyle={l.containerStyle} onPress={l.onPress}>
@@ -140,6 +161,7 @@ const cameraImage = async () => {
    
      </ThemeProvider>      
     );
+    
   }
   function textSearch() {
     const [searchQuery, setSearchQuery] = React.useState("");
@@ -159,7 +181,7 @@ const cameraImage = async () => {
       <View style={{ height: "35%", backgroundColor: COLORS.white, marginHorizontal: SIZES.padding / 2 }}>
       {/* Text & Searchbar */}
       <View style={{ flexDirection: "row" }}>
-        <Text style={{ ...FONTS.h2, marginBottom: SIZES.padding / 6 }}>商標文字</Text>
+        <Text style={{ ...FONTS.h2, marginBottom: SIZES.padding / 6,lineHeight: 68 }}>商標文字</Text>
         <TouchableOpacity
           onPress={() => {
             Alert.alert(
@@ -200,7 +222,7 @@ const cameraImage = async () => {
         buttonStyle={{ width: "100%", height: 45 }}
         containerStyle={{}}
         loading={isLoading}
-        disabled={((images.uploading2 !== ImageURL) | (searchQuery !== "")) & (isLoading !== true) ? false : true}
+        disabled={ (searchQuery !== "") & (isLoading !== true) ? false : true}
         onPress={async () => {
           // await SEND_IMAGE(ImageURL);
           // var photos = await GET_IMAGE2();
@@ -215,7 +237,7 @@ const cameraImage = async () => {
         title="送出"
       ></Button>
     </View>
-
+    
     
 </ThemeProvider>
 </View>
@@ -232,22 +254,12 @@ const cameraImage = async () => {
   
 
 
-export function Test({ route, navigation }) {
-    function HomeScreen() {
-        const [imageList, setImageList] = useState(route.params.base64Images);
-        var base64Images = GET_IMAGE3(0);
-        // setImageList(base64Images);
-        return (
-          <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', height: '50%', backgroundColor: "white" }}>
-            <Text>Home!</Text>
-          </View>
-        );
-      }
+export function TrademarkSearch({ navigation }) {
+  
   return (
     <Tab.Navigator>
       <Tab.Screen name="圖片搜尋" component={pictureSearch} />
       <Tab.Screen name="商標文字" component={textSearch} />
-    
     </Tab.Navigator>
   );
 }

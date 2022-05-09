@@ -7,7 +7,7 @@ import * as ImagePicker from "expo-image-picker";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { HomePage, HomePage2, HomePage3, TrademarkSearch, InspirationSearch, SearchResults, ImageDetails } from "./src/Containers/";
-import { Test } from "./src/Containers/Test"
+import { Test } from "./src/Containers/TrademarkSearch"
 const AppStack = createStackNavigator();
 
 export default function App() {
@@ -31,8 +31,9 @@ export default function App() {
           <AppStack.Screen name="HomePage" component={HomePage} />
           <AppStack.Screen name="HomePage3" component={HomePage3} />
           <AppStack.Screen name="HomePage2" component={HomePage2} />
-          {/* <AppStack.Screen name="Test" component={Test} /> */}
-          <AppStack.Screen name="TrademarkSearch" component={Test} />
+          {/* <AppStack.Screen name="TrademarkSearch" component={TrademarkSearch1} /> */}
+
+          <AppStack.Screen name="TrademarkSearch" component={TrademarkSearch} />
           <AppStack.Screen name="InspirationSearch" component={InspirationSearch} />
           <AppStack.Screen name="SearchResults" component={SearchResults} />
           <AppStack.Screen name="ImageDetails" component={ImageDetails} />

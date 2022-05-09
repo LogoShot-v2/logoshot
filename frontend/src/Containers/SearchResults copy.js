@@ -8,9 +8,9 @@ export default function SearchResults({ route, navigation }) {
   const ImageSearch = () => <SearchResultsContent photos={route.params.returns.photos1} navigation={navigation} type={"圖"} />;
   const TextSearch = () => <SearchResultsContent photos={route.params.returns.photos2} navigation={navigation} type={"字"} />;
   return (
-    <SearchResultsContent
-    photos={route.params.returns.photos2} 
-    navigation={navigation} 
-    type={"字"}  />
+    <Navigator initialRouteName={route.params.returns.initial}>
+    <AppStack.Screen name="Image Search" component={TextSearch} />
+     
+    </Navigator>
   );
 }
