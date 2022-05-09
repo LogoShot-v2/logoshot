@@ -54,7 +54,7 @@ const cameraImage = async () => {
 };
 
 
-  function pictureSearch() {
+  function pictureSearch({ navigation}) {
     const [searchQuery, setSearchQuery] = React.useState("");
 
       const [checked1, setChecked1] = React.useState(true);
@@ -166,7 +166,7 @@ const cameraImage = async () => {
     );
     
   }
-  function textSearch() {
+  function textSearch({ navigation}) {
     const [searchQuery, setSearchQuery] = React.useState("");
 
     const [checked1, setChecked1] = React.useState(true);
@@ -178,6 +178,8 @@ const cameraImage = async () => {
 
     const [isVisible, setIsVisible] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
+
+
     return (
       <View style={{ backgroundColor: COLORS.white, marginHorizontal: SIZES.padding / 2 , height: '100%' }}>
       <ThemeProvider theme={theme}>
