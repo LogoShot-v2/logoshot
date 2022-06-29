@@ -36,6 +36,7 @@ export default function App() {
           <AppStack.Screen name="TrademarkSearch" component={TrademarkSearch} />
           <AppStack.Screen name="InspirationSearch" component={InspirationSearch} />
           <AppStack.Screen name="SearchResults" component={SearchResults} />
+          {/* <AppStack.Screen name="SearchResults_picture" component={SearchResults_picture} /> */}
           <AppStack.Screen name="ImageDetails" component={ImageDetails} />
         </AppStack.Navigator>
       </NavigationContainer>
