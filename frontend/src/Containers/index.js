@@ -5,6 +5,7 @@ import TrademarkSearch from "./TrademarkSearch";
 import InspirationSearch from "./InspirationSearch";
 import ImageDetails from "./ImageDetails";
 import SearchResults from "./SearchResults";
-import SearchResults_picture from  "./SearchResults_picture";
+// import SearchResults_picture from  "./SearchResults_picture";
 
-export { HomePage, HomePage2, HomePage3, TrademarkSearch, InspirationSearch, ImageDetails, SearchResults, SearchResults_picture };
+export { HomePage, HomePage2, HomePage3, TrademarkSearch, InspirationSearch, ImageDetails, SearchResults}
+    // , SearchResults_picture };
